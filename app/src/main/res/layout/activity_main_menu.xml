@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainMenuActivity">
+
+    <ImageView
+        android:id="@+id/logoImg"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/ic_launcher"
+        android:layout_marginBottom="100dp"
+        />
+
+    <TextView
+        android:id="@+id/startBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="게임시작"
+        android:textSize="30dp"
+        android:background="@drawable/button_blue_round"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_marginBottom="30dp"
+        />
+    <TextView
+        android:id="@+id/optionBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="설정"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:background="@drawable/button_blue_round"
+        android:textColor="@color/white"
+        />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
