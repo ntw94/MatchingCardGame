@@ -3,6 +3,8 @@ package com.kr.ntw.matchingcard
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +12,10 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-/**
- * 인터페이스를 활용해서 데이터 전달하는 방법 찾기
- */
 class CustomDialogSelectCardSize(context: Context) {
     private val dialog = Dialog(context)
     val cardSizeList = Array<String>(3,{""})
+
     fun showDialog(){
         dialog.setContentView(R.layout.dialog_card_size)
         dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT,
@@ -37,19 +37,6 @@ class CustomDialogSelectCardSize(context: Context) {
                         dialog
                         )
     }
-
-    /* 수정 필요 */
-    private lateinit var onClickListener: OnDialogClickListener
-
-    fun setOnClickListener(listener: OnDialogClickListener)
-    {
-        onClickListener = listener
-    }
-
-    interface OnDialogClickListener{
-        fun onClicked(name:String)
-    }
-
 }
 
 class DialogRecyclerViewAdapter(
@@ -60,13 +47,12 @@ class DialogRecyclerViewAdapter(
 ):RecyclerView.Adapter<DialogRecyclerViewAdapter.ViewHolder>()
 {
 
+
     inner class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         val cardSize = itemView.findViewById<TextView>(R.id.item_card_size)
 
         init{
-            cardSize.setOnClickListener {
-                dialog.dismiss()
-            }
+
         }
     }
 
@@ -77,9 +63,20 @@ class DialogRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.cardSize.text = cardSizeList.get(position)
+
+        holder.cardSize.setOnClickListener {
+            val intent = Intent(holder.cardSize?.context,GameScreenActivity::class.java)
+
+            intent.putExtra("size",holder.cardSize.text.toString())
+            context.startActivity(
+                    Intent(intent)
+            )
+            dialog.dismiss()
+        }
     }
 
     override fun getItemCount(): Int {
         return cardSizeList.size
     }
+
 }

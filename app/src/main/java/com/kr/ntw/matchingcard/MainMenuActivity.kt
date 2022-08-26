@@ -14,11 +14,8 @@ class MainMenuActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.startBtn).setOnClickListener {
             val dialog = CustomDialogSelectCardSize(this)
             dialog.showDialog()
-            dialog.setOnClickListener(object: CustomDialogSelectCardSize.OnDialogClickListener {
-                override fun onClicked(name: String) {
-                    Toast.makeText(this@MainMenuActivity,name+"",Toast.LENGTH_SHORT).show()
-                }
-            })
+
+
         //            startActivity(
         //                Intent(this,GameScreenActivity::class.java)
         //            )

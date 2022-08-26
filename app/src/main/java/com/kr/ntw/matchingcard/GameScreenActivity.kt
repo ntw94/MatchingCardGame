@@ -2,6 +2,7 @@ package com.kr.ntw.matchingcard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,14 @@ class GameScreenActivity : AppCompatActivity() {
 
         val cardList = ArrayList<Card>()
 
-        for( i in 0 .. 5){
+        val cardString = intent.getStringExtra("size")
+        Log.d("gameScreen",""+cardString)
+
+        val s = cardString?.split("x")
+        val s1 = Integer.parseInt(s?.get(0))
+        val s2 = Integer.parseInt(s?.get(1))
+
+        for( i in 0 .. s1*s2){
             cardList.add(Card(false,""+i,i*2))
             cardList.add(Card(false,""+i,i*2+1))
         }
