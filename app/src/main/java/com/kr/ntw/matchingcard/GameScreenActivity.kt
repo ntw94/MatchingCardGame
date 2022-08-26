@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.Collections.shuffle
 
 class GameScreenActivity : AppCompatActivity() {
 
@@ -22,13 +23,18 @@ class GameScreenActivity : AppCompatActivity() {
         Log.d("gameScreen",""+cardString)
 
         val s = cardString?.split("x")
-        val s1 = Integer.parseInt(s?.get(0))
-        val s2 = Integer.parseInt(s?.get(1))
+        val s1 = Integer.parseInt(s.get(0))
+        val s2 = Integer.parseInt(s.get(1))
+
+        //다음 할 일은 카드에 지금 텍스트 대신에 이미지 파일 넣기 glide써서 끝
 
         for( i in 0 .. s1*s2){
             cardList.add(Card(false,""+i,i*2))
             cardList.add(Card(false,""+i,i*2+1))
         }
+
+        //카드 셔플
+        shuffle(cardList)
 
         val recyclerView:RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.adapter = GameScreenRecyclerViewAdapter(
