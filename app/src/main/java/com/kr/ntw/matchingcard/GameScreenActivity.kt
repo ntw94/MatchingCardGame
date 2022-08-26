@@ -23,8 +23,8 @@ class GameScreenActivity : AppCompatActivity() {
         Log.d("gameScreen",""+cardString)
 
         val s = cardString?.split("x")
-        val s1 = Integer.parseInt(s.get(0))
-        val s2 = Integer.parseInt(s.get(1))
+        val s1 = Integer.parseInt(s?.get(0))
+        val s2 = Integer.parseInt(s?.get(1))
 
         //다음 할 일은 카드에 지금 텍스트 대신에 이미지 파일 넣기 glide써서 끝
 
